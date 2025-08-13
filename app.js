@@ -1,12 +1,13 @@
 const path = require("node:path");
 const express = require("express");
 const session = require("express-session");
-const passport = require("passport");
+
 const passport = require("./passport")
 const flash = require('connect-flash')
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
-const { PrismaClient } = require('@prisma/client');
-
+const { PrismaClient } = require('./generated/prisma');
+const indexRouter = require('./routes/index')
+console.log(process.env.DATABASE_URL)
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
@@ -14,7 +15,7 @@ app.set("view engine", "ejs");
 
 
 app.use(
-  expressSession({
+  session({
     cookie: {
      maxAge: 7 * 24 * 60 * 60 * 1000 // ms
     },
@@ -34,6 +35,13 @@ app.use(
 app.use(passport.session());
 app.use(express.urlencoded({ extended: false }));
 app.use(flash())
+
+app.use((req, res, next) => {
+  res.locals.user = req.user
+  next()
+})
+
+app.use('/', indexRouter);
 
 
 app.listen(process.env.HOST || 3000, (error) => {
