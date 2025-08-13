@@ -9,7 +9,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
     try{
-        const {rows} = await pool.query("SELECT * FROM User WHERE id = $1", [id])
+        const {rows} = await pool.query(`SELECT * FROM "User" WHERE id = $1`, [id])
         const user = rows[0]
         done(null, user)
     } catch(err){
@@ -20,7 +20,7 @@ passport.deserializeUser(async (id, done) => {
 passport.use(
   new LocalStrategy(async (username, password, done) => {
     try {
-      const {rows} = await pool.query("SELECT * FROM User WHERE username = $1", [username])
+      const {rows} = await pool.query(`SELECT * FROM "User" WHERE username = $1`, [username])
       const user = rows[0]
       if(!user){
         console.log("incorrect username")

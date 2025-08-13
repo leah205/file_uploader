@@ -7,7 +7,7 @@ const flash = require('connect-flash')
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('./generated/prisma');
 const indexRouter = require('./routes/index')
-console.log(process.env.DATABASE_URL)
+
 
 const app = express();
 app.set("views", path.join(__dirname, "views"));

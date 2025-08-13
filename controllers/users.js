@@ -1,5 +1,5 @@
 const db = require("../db/queries")
-
+const passport = require("../passport")
 
 const userController = {
     signup: {
@@ -14,8 +14,21 @@ const userController = {
                     next(err)
             }
         }
+    },
+    login: {
+        get: (req, res) => {
+               res.render("login", {errors: [{msg: req.flash('error')[0]}]})
+        },
+        post:  passport.authenticate("local", {
+                    successRedirect: "/",
+                    failureRedirect: "/login",
+                    failureFlash: true
+})
     }
 
+
 }
+
+
 
 module.exports = userController
