@@ -1,3 +1,8 @@
+body{
+  position: relative;
+  height: 100vh;
+}
+
 /* log in and sign up*/
 .form{
 
@@ -44,6 +49,31 @@ nav ul {
     align-items: center;
     gap: 15px;
     list-style-type: none;
+}
 
-  
+/* file form */
+.hidden{
+  display: none;
+}
+
+.file-form{
+  background: gray;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  padding: 10px;
+}
+.file-form .header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.file-form button{
+  display: block;
+}
+.file-form input{
+  margin-bottom: 10px;
 }
