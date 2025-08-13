@@ -31,9 +31,21 @@ const userController = {
                     successRedirect: "/",
                     failureRedirect: "/login",
                     failureFlash: true
-})
-    }
+        })
+    },
+    logout: {
+        get: (req, res, next) => {
+        req.logout((err) => {
+        if (err){
+            return next(err)
+        }
+        res.redirect("/")
+    })
 
+        }
+    }
+    
+    
 
 }
 

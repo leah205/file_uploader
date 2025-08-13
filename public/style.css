@@ -1,11 +1,11 @@
+/* log in and sign up*/
 .form{
 
     width: 300px;
     border: 3px solid white;
     padding: 20px;
     margin: 50px auto;
-    border-radius: 20px;
-     
+    border-radius: 20px;  
     
 }
 .form input{
@@ -23,4 +23,27 @@
     margin: 10px auto;
     padding: 10px;
     font-size: 1.2rem;
+}
+/* nav */
+nav a {
+  float: left;
+  font-size: 16px;
+  color: black;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+nav div{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+nav ul {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 15px;
+    list-style-type: none;
+
+  
 }
