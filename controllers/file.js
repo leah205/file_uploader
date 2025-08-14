@@ -1,13 +1,18 @@
 const multer  = require('multer')
 const upload = multer({ dest: 'public/uploads/' })
+const queries = require('../db/queries')
 
 const fileController = {
     fileUpload: {
-        post: [upload.single('file'), (req, res) => {
-                const filename = req.file.filename
+        post: [upload.single('file'), async (req, res, next) => {
+                const filename = req.file.originalname
                 console.log(req.file)
-                console.log(req.body)
-                res.redirect('/')
+                try {
+                     await queries.createFile(filename, req.user.id)
+                } catch(err){
+                   next(err)
+                }
+            res.redirect('/')
         }]
     }
 }

@@ -1,6 +1,7 @@
 const bcrypt = require("bcryptjs")
 
 const {PrismaClient} = require("../generated/prisma")
+const { name } = require("ejs")
 const prisma = new PrismaClient()
 
 const queries = {
@@ -18,6 +19,25 @@ const queries = {
         } catch (err) {
         throw new Error(err)
      }  
+          await prisma.$disconnect()
+     },
+     createFile: async (name, userid) => {
+        try {
+            await prisma.file.create({
+                data: {
+                    user: {
+                        connect: {
+                            id: userid
+                        }
+                    },
+                  
+                    name: name
+
+                }
+            })
+        } catch(err){
+            throw new Error(err)
+        }
           await prisma.$disconnect()
      }
  

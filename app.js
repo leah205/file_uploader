@@ -42,6 +42,10 @@ app.use((req, res, next) => {
   next()
 })
 
+app.use((err, req, res, next) => {
+  console.error(err)
+})
+
 app.use('/', indexRouter);
 
 
