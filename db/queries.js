@@ -21,7 +21,7 @@ const queries = {
      }  
           await prisma.$disconnect()
      },
-     createFile: async (name, userid) => {
+     createFile: async (originalname, name, userid) => {
         try {
             await prisma.file.create({
                 data: {
@@ -30,7 +30,7 @@ const queries = {
                             id: userid
                         }
                     },
-                  
+                    originalname: originalname, 
                     name: name
 
                 }

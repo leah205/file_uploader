@@ -5,10 +5,11 @@ const queries = require('../db/queries')
 const fileController = {
     fileUpload: {
         post: [upload.single('file'), async (req, res, next) => {
-                const filename = req.file.originalname
+                const originalname = req.file.originalname
+                const filename = req.file.filename
                 console.log(req.file)
                 try {
-                     await queries.createFile(filename, req.user.id)
+                     await queries.createFile(originalname, filename, req.user.id)
                 } catch(err){
                    next(err)
                 }
