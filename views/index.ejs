@@ -7,6 +7,13 @@
         Upload File
     </button>
 
+    <% locals.files.forEach((file) => {%>
+        <div class = 'file-container'>
+            <p><%=file.originalname%></p>
+        </div>
+    <% }) %>
+
+
     <form class = 'file-form hidden' action="/file-upload" method="post" enctype="multipart/form-data">
         <div class="header">
             <h1>New File</h1>
