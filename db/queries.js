@@ -1,20 +1,26 @@
 const bcrypt = require("bcryptjs")
-const pool = require('../db/pool')
 
+const {PrismaClient} = require("../generated/prisma")
+const prisma = new PrismaClient()
 
 const queries = {
-    createUser: async(username, password) => {
+    createUser: async (username, password) => {
          try{
         const hashedPassword = await bcrypt.hash(password, 10)
-        console.log(typeof hashedPassword)
-        await pool.query( `
-            INSERT INTO "User" (username, password) 
-            VALUES ($1, $2)
-            `, [username, hashedPassword])
-    } catch (err) {
+
+        const user = await prisma.user.create({
+            data: {
+                username: username,
+                password: hashedPassword
+            },
+        })
+        
+        } catch (err) {
         throw new Error(err)
-    }  
-    }
+     }  
+          await prisma.$disconnect()
+     }
+ 
 
 } 
 
