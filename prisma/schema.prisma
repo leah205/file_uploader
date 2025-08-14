@@ -18,6 +18,7 @@ model User{
   id  Int @id @default(autoincrement())
   username String @db.VarChar(50)
   password String @db.VarChar(255)
+  files File[]
 }
 
 model Session {
@@ -25,4 +26,10 @@ model Session {
   sid       String   @unique
   data      String   
   expiresAt   DateTime
+}
+
+model File {
+  id       Int  @id @default(autoincrement())
+  user User @relation(fields: [userid], references: [id])
+  userid Int
 }
