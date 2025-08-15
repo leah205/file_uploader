@@ -20,7 +20,7 @@ const queries = {
     }
     await prisma.$disconnect();
   },
-  createFile: async (originalname, name, userid) => {
+  createFile: async (originalname, name, userid, size) => {
     try {
       await prisma.file.create({
         data: {
@@ -31,6 +31,7 @@ const queries = {
           },
           originalname: originalname,
           name: name,
+          size: size
         },
       });
     } catch (err) {
@@ -44,7 +45,7 @@ const queries = {
             where: {
                 userid: id
             },
-           
+          
         })
         return files
     } catch(err) {
