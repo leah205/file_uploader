@@ -19,6 +19,7 @@ model User{
   username String @db.VarChar(50)
   password String @db.VarChar(255)
   files File[]
+  @@map("users")
 }
 
 model Session {
@@ -33,5 +34,8 @@ model File {
   name  String @db.VarChar(255)
   originalname String @db.VarChar(255)
   user User @relation(fields: [userid], references: [id])
+  uploadedAt DateTime @default(now())
+  size Int
   userid Int
+  @@map("files")
 }
