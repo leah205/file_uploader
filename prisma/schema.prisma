@@ -37,5 +37,18 @@ model File {
   uploadedAt DateTime @default(now())
   size Int
   userid Int
+  parentFolder Folder? @relation(fields: [folderid], references: [id])
+  folderid Int?
   @@map("files")
 }
+
+model Folder {
+   id       Int  @id @default(autoincrement())
+   files File[]
+   parent Folder? @relation("parentChild", fields: [parentid], references: [id])
+   parentid Int?
+   children Folder[] @relation("parentChild")
+   name String @db.VarChar(50)
+  @@map("folders")
+}
+
