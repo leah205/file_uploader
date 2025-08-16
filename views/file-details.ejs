@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('partials/header')%>
+<body>
+     <%- include('partials/nav')%>
+    <div class="file-details center">
+        <h1><%= file.originalname%></h1>
+        <p><%= file.uploadedAt %></p>
+        <p><%= file.size%> Bytes</p>
+        <a href="/uploads/<%= file.name %>"><button>Download</button></a>
+    </div>
+    
+</body>
+</html>
