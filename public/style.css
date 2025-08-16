@@ -18,7 +18,7 @@ body{
 
 /* log in and sign up*/
 
-.center, form {
+.center{
    position: absolute;
   top: 50%;
   left: 50%;
@@ -130,6 +130,8 @@ nav{
 }
 
 
+
+
 .file-form .header{
   display: flex;
   justify-content: space-between;
@@ -171,4 +173,19 @@ color: rgb(255, 86, 86);
   color: white;
   text-decoration: none;
   margin: 20px;
+}
+/* modal */
+.modal{
+     
+      display: none; 
+      position: fixed; 
+      z-index: 1; 
+      left: 0;
+      top: 0;
+      width: 100%; 
+      height: 100%; 
+      background-color: rgba(0,0,0,0.5); /* overlay */
+      justify-content: center;
+      align-items: center;
+    
 }
