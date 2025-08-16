@@ -3,20 +3,31 @@ body{
   height: 100vh;
   background:  var(--main);
   color: white;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-template-rows: 1fr 5fr;
+  padding: 0;
+  margin: 0;
 }
 :root{
   --accent: rgb(97, 229, 255);
-  --main: rgb(46, 46, 46);
+  --main: rgb(28, 28, 28);
+  --border: rgb(174, 174, 174);
+  --background: rgb(129, 129, 129, 0.1);
 }
 
 /* log in and sign up*/
-.form{
+form{
 
     width: 300px;
-    border: 3px solid white;
+    border: 1px solid var(--border);
     padding: 20px;
-    margin: 50px auto;
+   
     border-radius: 20px;  
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
     
 }
 .form input{
@@ -32,6 +43,11 @@ body{
   
 }
 /* nav */
+nav{
+  grid-column: 1 / 3;
+  grid-row: 1/2;
+  border: 1px solid var(--border)
+}
 nav a {
   float: left;
   font-size: 16px;
@@ -39,11 +55,11 @@ nav a {
 }
 
 nav a, button{
-   color: white;
+   color: var(--border);
   text-align: center;
   text-decoration: none;
-  border: 1px solid gray;
-  background: var(--main);
+  border: 1px solid var(--border);
+  background: var(--background);
   padding: 20px;
   font-size: 1.2rem;
   border-radius: 5px;
@@ -71,20 +87,45 @@ nav{
   padding-right: 20px;
 }
 
+/* index page*/
+
+
+/* side bar */
+.sidebar{
+  padding: 20px;
+  grid-column: 1/2;
+  grid-row: 2/3;
+  border: 1px solid var(--border)
+
+
+}
+.files-container{
+  grid-column: 2/3;
+  grid-row: 2/3;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+.file-container{
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgb(129, 129, 129, 0.1);
+  
+  padding: 5px;
+  font-size: 1.2rem;
+}
+.main-content > div {
+  border: 1px solid var(--border)
+}
+
 /* file form */
 .hidden{
   display: none;
 }
 
-.file-form{
-  background: gray;
 
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-  padding: 10px;
-}
 .file-form .header{
   display: flex;
   justify-content: space-between;

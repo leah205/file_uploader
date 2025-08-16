@@ -3,15 +3,21 @@
 <%- include('partials/header')%>
 <body>
     <%- include('partials/nav')%>
-    <button class = 'open-file-upload'>
-        Upload File
-    </button>
-
-    <% locals.files.forEach((file) => {%>
-        <div class = 'file-container'>
-            <p><%=file.originalname%></p>
+ 
+        <div class="sidebar">
+            <button class = 'open-file-upload'>
+                Upload File
+            </button>
         </div>
-    <% }) %>
+        
+        <div class="files-container">
+            <% locals.files.forEach((file) => {%>
+                <button class = 'file-container'>
+                    <p><%=file.originalname%></p>
+                </button>
+            <% }) %>
+        </div>
+
 
 
     <form class = 'file-form hidden' action="/file-upload" method="post" enctype="multipart/form-data">
