@@ -53,6 +53,26 @@ const queries = {
     }
     await prisma.$disconnect();
   },
+
+
+  getFile: async (id) =>{
+
+    try {
+      const file = await prisma.file.findUnique({
+        where: {
+          id: parseInt(id)
+        }
+      })
+     
+      return file
+    } catch (err){
+      console.error(err)
+    }
+    await prisma.$disconnect()
+  }
+
+
+
 };
 
 module.exports = queries;

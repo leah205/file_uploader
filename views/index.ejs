@@ -12,9 +12,11 @@
         
         <div class="files-container">
             <% locals.files.forEach((file) => {%>
-                <button class = 'file-container'>
-                    <p><%=file.originalname%></p>
-                </button>
+                <a href ="/file/<%= file.id %>">
+                    <button class = 'file-container'>
+                        <p><%=file.originalname%></p>
+                    </button>
+                </a>
             <% }) %>
         </div>
 
