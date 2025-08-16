@@ -69,6 +69,17 @@ const queries = {
       console.error(err)
     }
     await prisma.$disconnect()
+  },
+  createFolder: async(name) => {
+    console.log(name)
+    await prisma.folder.create({
+      data: {
+        name: name
+      }
+    })
+    
+    await prisma.$disconnect()
+    
   }
 
 

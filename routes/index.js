@@ -5,6 +5,7 @@ const homeController = require('../controllers/home.js');
 const fileController = require('../controllers/file')
 const validation = require("../middleware/validate.js")
 const authentication = require("../middleware/authentication.js")
+const folderController = require('../controllers/folderController.js')
 
 
 
@@ -16,6 +17,7 @@ router.get('/', authentication.isAuth, homeController.index.get)
 router.get('/logout',userController.logout.get)
 router.post('/file-upload', fileController.fileUpload.post)
 router.get('/file/:id', authentication.isAuth, fileController.fileDetails.get )
+router.post('/new-folder', folderController.newFolder.post)
 
 
 
