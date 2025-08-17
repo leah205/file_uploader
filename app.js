@@ -11,6 +11,8 @@ const indexRouter = require('./routes/index')
 //make responsive
 //figure out file view structure
 //file back button
+//separate queries into dif files
+//when to prisma disconnect
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

@@ -25,7 +25,7 @@ body{
   left: 50%;
   transform: translate(-50%, -50%); 
 }
-form{
+.form{
 
     width: 300px;
     border: 1px solid var(--border);
@@ -59,7 +59,7 @@ nav a {
  
 }
 
-nav a, button{
+nav a, .primary-btn{
    color: var(--border);
   text-align: center;
   text-decoration: none;
@@ -70,7 +70,7 @@ nav a, button{
   border-radius: 5px;
 }
 
-nav a:hover, button:hover{
+nav a:hover, .primary-btn:hover{
   background: rgba(97, 229, 255, 0.5);
   border: 1px solid var(--accent);
   color: var(--accent);
@@ -149,7 +149,7 @@ nav{
   display: none;
 }
 
-.modal .header{
+.header{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -205,3 +205,11 @@ color: var(--red);
   text-decoration: none;
   margin: 20px;
 }
+.trash-btn{
+  background: 0;
+  border: 0;
+}
+.trash-btn img{
+  height: 30px;
+}
+

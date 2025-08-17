@@ -5,10 +5,17 @@
      <%- include('partials/nav')%>
      <a class = 'back-link' href="/">My library</a>
     <div class="file-details center">
-        <h1><%= file.originalname%></h1>
+        
+        <div class="header">
+            <h1><%= file.originalname%></h1>
+            <form action="/file/<%= file.id %>/delete" method = 'POST'>
+                <button class = 'trash-btn'  type = 'submit'><img src="/assets/trash.svg" alt=""></button>
+            </form>
+        </div>
+      
         <p><%= file.uploadedAt %></p>
         <p><%= file.size%> Bytes</p>
-        <a href="/uploads/<%= file.name %>"><button>Download</button></a>
+        <a href="/uploads/<%= file.name %>"><button class = 'primary-btn' >Download</button></a>
     </div>
     
 </body>

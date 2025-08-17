@@ -94,6 +94,14 @@ const queries = {
       
     })
     return folders
+  },
+  deleteFile:  async (fileid) => {
+    await prisma.file.delete({
+      where: {
+        id: fileid
+      }
+    })
+    await prisma.$disconnect()
   }
 
 

@@ -20,14 +20,18 @@ const fileController = {
         get: async (req, res) => {
             try {
                 const file = await queries.getFile(req.params.id)
-                
-                console.log(file)
                 res.render('file-details', {file: file})
             } catch{
                 next(err)
-            }
-            
-            
+            }   
+        },
+        delete: async (req, res, next) => {
+            try {
+                await queries.deleteFile(parseInt(req.params.id))
+                res.redirect('/')
+            } catch(err){
+                next(err)
+            }   
         }
     }
 }

@@ -17,6 +17,7 @@ router.get('/', authentication.isAuth, homeController.index.get)
 router.get('/logout',userController.logout.get)
 router.post('/file-upload', fileController.fileUpload.post)
 router.get('/file/:id', authentication.isAuth, fileController.fileDetails.get )
+router.post('/file/:id/delete', fileController.fileDetails.delete)
 router.post('/new-folder', folderController.newFolder.post)
 
 

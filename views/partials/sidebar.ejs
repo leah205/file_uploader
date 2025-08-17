@@ -1,14 +1,15 @@
  <div class="sidebar">
-            <button class = 'open-file-upload'>
+            <button class = 'open-file-upload primary-btn'>
                 Upload File
             </button>
-            <button class = 'open-new-folder'>
+            <button class = 'open-new-folder primary-btn'>
                 New Folder
             </button>
             <div class="folders">
+                <h2>Folders</h2>
                 <ul>
                     <% locals.folders.forEach((folder) => {%>
-                        <li><%= folder.name %></li>
+                        <li><button><%= folder.name %></button></li>
                     <%})%>
                 </ul>
             </div>
