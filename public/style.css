@@ -15,6 +15,7 @@ body{
   --border: rgb(174, 174, 174);
   --background: rgb(129, 129, 129, 0.1);
   --red: rgb(255, 86, 86);
+  --hover-background: rgb(191, 191, 191, 0.3);
 }
 
 /* log in and sign up*/
@@ -104,8 +105,25 @@ nav{
   display: flex;
   flex-direction: column;
   gap: 20px;
-
-
+}
+.sidebar h2{
+  color: var(--border);
+}
+.sidebar .folders ul{
+  list-style-type: none;
+}
+.sidebar a {
+  text-decoration: none;
+  color: var(--border)
+}
+.sidebar .folders li{
+  font-size: 1.3rem;
+  padding: 10px;
+  border-radius: 6px;
+  width: fit-content;
+}
+.sidebar .folders li:hover{
+  background: var(--hover-background)
 }
 .files-container{
   grid-column: 2/3;
@@ -119,7 +137,7 @@ nav{
 .file-container{
   border-radius: 10px;
   border: 1px solid var(--border);
-  background: rgb(129, 129, 129, 0.1);
+  background: var(--background);
   color: white;
   text-decoration: none;
   padding: 10px;
@@ -129,7 +147,7 @@ nav{
   align-items: center;
 }
 .file-container:hover{
-  background: rgb(191, 191, 191, 0.3);
+  background: var(--hover-background)
 }
 .main-content > div {
   border: 1px solid var(--border)
