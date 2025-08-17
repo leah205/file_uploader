@@ -70,18 +70,29 @@ const queries = {
     }
     await prisma.$disconnect()
   },
-  createFolder: async(name) => {
+  createFolder: async(name, userid) => {
     console.log(name)
     await prisma.folder.create({
       data: {
-        name: name
+        name: name,
+        user: {
+          connect: {
+            id: userid
+          }
+        }
       }
     })
     
     await prisma.$disconnect()
   },
-  getFolders: async () => {
-    const folders = await prisma.folder.findMany({})
+  getFolders: async (userid) => {
+    const folders = await prisma.folder.findMany({
+      
+        where: {
+          userid: userid
+        }
+      
+    })
     return folders
   }
 

@@ -5,7 +5,7 @@ const folderController = {
         post: async (req, res, next) => {
           
             try{
-                await db.createFolder(req.body.name)
+                await db.createFolder(req.body.name, req.user.id)
             } catch(err) {
                 next(err)
             }
