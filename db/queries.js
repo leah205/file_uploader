@@ -79,7 +79,10 @@ const queries = {
     })
     
     await prisma.$disconnect()
-    
+  },
+  getFolders: async () => {
+    const folders = await prisma.folder.findMany({})
+    return folders
   }
 
 

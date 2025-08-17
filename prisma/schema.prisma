@@ -19,6 +19,7 @@ model User{
   username String @db.VarChar(50)
   password String @db.VarChar(255)
   files File[]
+  folders Folder[]
   @@map("users")
 }
 
@@ -49,6 +50,8 @@ model Folder {
    parentid Int?
    children Folder[] @relation("parentChild")
    name String @db.VarChar(50)
+   user User @relation(fields: [userid], references: [id])
+   userid Int
   @@map("folders")
 }
 

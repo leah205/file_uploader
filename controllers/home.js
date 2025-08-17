@@ -5,7 +5,8 @@ const homeController = {
         get: async (req, res, next) => {
             try{
                 const files = await queries.getFiles(req.user.id);
-                 res.render("index", {files: files})
+                const folders  = await queries.getFolders()
+                 res.render("index", {files: files, folders: folders})
                 
             } catch (err){
                 next(err)
