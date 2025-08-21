@@ -1,26 +1,9 @@
-const bcrypt = require("bcryptjs");
-
 const { PrismaClient } = require("../generated/prisma");
 const { name } = require("ejs");
 const prisma = new PrismaClient();
 
-const queries = {
-  createUser: async (username, password) => {
-    try {
-      const hashedPassword = await bcrypt.hash(password, 10);
-
-      const user = await prisma.user.create({
-        data: {
-          username: username,
-          password: hashedPassword,
-        },
-      });
-    } catch (err) {
-      throw new Error(err);
-    }
-    await prisma.$disconnect();
-  },
-  createFile: async (originalname, name, userid, size) => {
+const fileQueries = {
+    createFile: async (originalname, name, userid, size) => {
     try {
       await prisma.file.create({
         data: {
@@ -53,8 +36,6 @@ const queries = {
     }
     await prisma.$disconnect();
   },
-
-
   getFile: async (id) =>{
 
     try {
@@ -69,31 +50,6 @@ const queries = {
       console.error(err)
     }
     await prisma.$disconnect()
-  },
-  createFolder: async(name, userid) => {
-    console.log(name)
-    await prisma.folder.create({
-      data: {
-        name: name,
-        user: {
-          connect: {
-            id: userid
-          }
-        }
-      }
-    })
-    
-    await prisma.$disconnect()
-  },
-  getFolders: async (userid) => {
-    const folders = await prisma.folder.findMany({
-      
-        where: {
-          userid: userid
-        }
-      
-    })
-    return folders
   },
   deleteFile:  async (fileid) => {
     await prisma.file.delete({
@@ -118,4 +74,4 @@ const queries = {
 }
 }
 
-module.exports = queries;
+module.exports = fileQueries

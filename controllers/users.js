@@ -1,6 +1,6 @@
-const db = require("../db/queries")
-const passport = require("../passport")
 
+const passport = require("../passport")
+const userdb = require("../db/userQueries")
 const {validationResult} = require('express-validator')
 
 const userController = {
@@ -16,7 +16,7 @@ const userController = {
                 })
             }
              try {
-                await db.createUser(req.body.username, req.body.password)
+                await userdb.createUser(req.body.username, req.body.password)
                 res.redirect('/login')
             } catch (err) {
                     next(err)
