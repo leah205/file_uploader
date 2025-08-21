@@ -102,10 +102,20 @@ const queries = {
       }
     })
     await prisma.$disconnect()
-  }
+  },
+
+  getFolderFiles: async (folderid) => {
+    
+      const files = await prisma.file.findMany({
+      where: {
+        folderid: folderid
+      } 
+        })
+   
+  return files
 
 
-
-};
+}
+}
 
 module.exports = queries;
