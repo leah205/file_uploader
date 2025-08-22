@@ -1,4 +1,5 @@
  <div class="files-container">
+    <h1><%= folder.name %></h1>
             <% locals.files.forEach((file) => {%>
                 <a class = 'file-container' href ="/file/<%= file.id %>">
                         <p><%=file.originalname%></p>

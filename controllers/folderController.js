@@ -16,8 +16,9 @@ const folderController = {
    folder: {
     get: async (req, res, next) => {
         try{
-            const files = await filedb.getFolderFiles(Number(req.params.id))
-            res.render('folder', {files: files})
+            //const files = await filedb.getFolderFiles(Number(req.params.id))
+            const folder = await folderdb.getFolderFromId(Number(req.params.id))
+            res.render(`folder`, {files: [], folders: [], folder: folder})
             //get folder parents to display tree
             } catch(err) {
                 next(err)
