@@ -13,6 +13,9 @@ const indexRouter = require('./routes/index')
 //file back button
 //separate queries into dif files
 //when to prisma disconnect
+//delete try catch in children
+//delete index.ejs and make it home folder
+//create home folder automatically that user redirects to 
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

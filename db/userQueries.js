@@ -16,6 +16,12 @@ const userQueries = {
           });
           return user 
       },
+      isUsernameTaken: async (username) => {
+        const user = await prisma.user.findUnique({
+            where: {username: username}
+        })
+        return Boolean(user)
+      }
 }
 
 module.exports = userQueries
