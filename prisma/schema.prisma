@@ -52,6 +52,7 @@ model Folder {
    name String @db.VarChar(50)
    user User @relation(fields: [userid], references: [id])
    userid Int
+   root Boolean
   @@map("folders")
 }
 

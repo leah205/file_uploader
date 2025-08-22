@@ -1,6 +1,7 @@
 
 const passport = require("../passport")
 const userdb = require("../db/userQueries")
+const folderdb = require("../db/folderQueries")
 const {validationResult} = require('express-validator')
 
 const userController = {
@@ -16,7 +17,8 @@ const userController = {
                 })
             }
              try {
-                await userdb.createUser(req.body.username, req.body.password)
+                const user = await userdb.createUser(req.body.username, req.body.password)
+                folderdb.createFolder("All", user.id, true)
                 res.redirect('/login')
             } catch (err) {
                     next(err)

@@ -13,11 +13,11 @@ const folderQueries = {
     })
     return folders
   },
-  createFolder: async(name, userid) => {
-    console.log(name)
+  createFolder: async(name, userid, isRoot) => {
     await prisma.folder.create({
       data: {
         name: name,
+        root: isRoot,
         user: {
           connect: {
             id: userid
@@ -25,9 +25,8 @@ const folderQueries = {
         }
       }
     })
-    
-    await prisma.$disconnect()
   },
+ 
 }
 
 module.exports = folderQueries
