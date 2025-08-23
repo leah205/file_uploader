@@ -21,9 +21,9 @@ router.post('/folder/:id/new-folder', folderController.newFolder.post)
 router.get('/folder/:id', folderController.folder.get)
 
 //file queries
-router.post('/file-upload', fileController.fileUpload.post)
-router.get('/file/:id', authentication.isAuth, fileController.fileDetails.get )
-router.post('/file/:id/delete', fileController.fileDetails.delete)
+router.post('/folder/:id/file-upload', fileController.fileUpload.post)
+router.get('/folder/:id/file/:fileid', authentication.isAuth, fileController.fileDetails.get )
+router.post('/folder/:id/file/:fileid/delete', fileController.fileDetails.delete)
 
 
 

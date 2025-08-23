@@ -3,7 +3,7 @@ const { name } = require("ejs");
 const prisma = new PrismaClient();
 
 const fileQueries = {
-    createFile: async (originalname, name, userid, size) => {
+    createFile: async (originalname, name, userid, size, folderid) => {
     try {
       await prisma.file.create({
         data: {
@@ -11,6 +11,11 @@ const fileQueries = {
             connect: {
               id: userid,
             },
+          },
+          parentFolder: {
+            connect: {
+              id: folderid
+            }
           },
           originalname: originalname,
           name: name,

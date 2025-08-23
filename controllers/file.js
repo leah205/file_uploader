@@ -8,12 +8,13 @@ const fileController = {
                 const originalname = req.file.originalname
                 const filename = req.file.filename
                 const size = req.file.size
+                const folderid = Number(req.params.id)
                 try {
-                     await filedb.createFile(originalname, filename, req.user.id, size)
+                     await filedb.createFile(originalname, filename, req.user.id, size, folderid)
                 } catch(err){
                    next(err)
                 }
-            res.redirect('/')
+            res.redirect('/folder/' + req.params.id)
         }]
     },
     fileDetails: {

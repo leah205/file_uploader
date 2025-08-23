@@ -14,6 +14,14 @@ const folderQueries = {
     })
     return folders
   },
+  getChildrenFiles: async (folderid, userid) => {
+    const files = await prisma.file.findMany({
+        where: {
+          folderid: folderid,
+          userid: userid
+        }})
+    return files
+  },
   getRootFolder: async (userid) => {
     
     const rootFolder = await prisma.folder.findMany({

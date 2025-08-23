@@ -1,5 +1,6 @@
  <div class = 'modal file-modal'>
-        <form class = 'file-form form' action="/file-upload" method="post" enctype="multipart/form-data">
+        <form class = 'file-form form' action="/folder/<%= folder.id %>/file-upload" 
+        method="post" enctype="multipart/form-data">
             <div class="header">
                 <h1>New File</h1>
                 <button type = 'button' class = 'close-form close-file-form primary-btn'>x</button>
