@@ -5,6 +5,13 @@ const modals = document.querySelectorAll('.modal')
 const fileModal = document.querySelector('.file-modal')
 const newFolderBtn = document.querySelector('.open-new-folder')
 const newFolderModal = document.querySelector('.new-folder-modal')
+const editFolderBtn = document.querySelector('.edit-btn')
+const editModal = document.querySelector('.edit-modal')
+
+
+editFolderBtn.addEventListener('click', () => {
+    editModal.style.display = 'flex'
+})
 openUploadBtn.addEventListener('click', ()=> {
     fileModal.style.display = 'flex'
 })

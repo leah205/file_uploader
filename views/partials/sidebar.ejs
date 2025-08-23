@@ -9,7 +9,12 @@
                 <h2>Folders</h2>
                 <ul>
                     <% locals.folders.forEach((folder) => {%>
-                        <li><a href = '/folder/<%= folder.id%>'><%= folder.name %></a></button></li>
+                        <li>
+                            <a href = '/folder/<%= folder.id%>'><%= folder.name %></a>
+                            <button class = 'edit-btn'><img src="/assets/edit.svg" alt="edit"></button>
+                            <button class = 'trash-btn'><img src="/assets/trash.svg" alt="delete"></button>
+
+                        </li>
                     <%})%>
                 </ul>
             </div>

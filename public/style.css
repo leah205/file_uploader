@@ -120,11 +120,23 @@ nav{
   font-size: 1.3rem;
   padding: 10px;
   border-radius: 6px;
-  width: fit-content;
+  width: 80%;
 }
 .sidebar .folders li:hover{
   background: var(--hover-background)
 }
+
+/* file container */
+.folder-nest a{
+  display: inline-block;
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+.folder-nest span{
+  font-size: 1.5rem;
+}
+
 .files-container{
   grid-column: 2/3;
   grid-row: 2/3;
@@ -230,28 +242,22 @@ color: var(--red);
   text-decoration: none;
   margin: 20px;
 }
-.trash-btn{
+.trash-btn, .edit-btn{
   background: 0;
   border: 0;
   height: 40px;
   width: 40px;
   border-radius: 50%;
 }
+.edit-btn:hover{
+  background: rgba(255, 255, 255, 0.502)
+}
 .trash-btn:hover{
   background: rgba(255, 86, 86, 0.3);
 }
-.trash-btn img{
+.trash-btn img, .edit-btn img{
   height: 30px;
 }
 .back-link{
   color: white
-}
-.folder-nest a{
-  display: inline-block;
-  color: white;
-  font-size: 1.5rem;
-  padding: 10px;
-}
-.folder-nest span{
-  font-size: 1.5rem;
 }
