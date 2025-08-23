@@ -3,12 +3,12 @@
 <%- include('partials/header')%>
 <body>
      <%- include('partials/nav')%>
-     <a class = 'back-link' href="/">My library</a>
+     <a class = 'back-link' href="/folder/<%= file.folderid %>">My library</a>
     <div class="file-details center">
         
         <div class="header">
             <h1><%= file.originalname%></h1>
-            <form action="/file/<%= file.id %>/delete" method = 'POST'>
+            <form action="/folder/<%= file.folderid %>/file/<%= file.id %>/delete" method = 'POST'>
                 <button class = 'trash-btn'  type = 'submit'><img src="/assets/trash.svg" alt=""></button>
             </form>
         </div>

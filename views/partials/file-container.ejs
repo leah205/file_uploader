@@ -4,9 +4,9 @@
         <a href="/folder/<%= folder.parentid%>" class = 'back-link'>Back</a>
     <% } %>
             <% locals.files.forEach((file) => {%>
-                <a class = 'file-container' href ="/file/<%= file.id %>">
+                <a class = 'file-container' href ="/folder/<%= folder.id %>/file/<%= file.id %>">
                         <p><%=file.originalname%></p>
-                         <form action="/file/<%= file.id %>/delete" method = 'POST'>
+                         <form action="/folder/<%= folder.id %>/file/<%= file.id %>/delete" method = 'POST'>
                             <button class = 'trash-btn'  type = 'submit'><img src="/assets/trash.svg" alt=""></button>
                         </form>
                 </a>

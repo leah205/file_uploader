@@ -18,9 +18,9 @@ const fileController = {
         }]
     },
     fileDetails: {
-        get: async (req, res) => {
+        get: async (req, res, next) => {
             try {
-                const file = await filedb.getFile(req.params.id)
+                const file = await filedb.getFile(req.params.fileid)
                 res.render('file-details', {file: file})
             } catch{
                 next(err)
@@ -28,8 +28,8 @@ const fileController = {
         },
         delete: async (req, res, next) => {
             try {
-                await filedb.deleteFile(parseInt(req.params.id))
-                res.redirect('/')
+                await filedb.deleteFile(parseInt(req.params.fileid))
+                res.redirect('/folder/' + req.params.id)
             } catch(err){
                 next(err)
             }   
