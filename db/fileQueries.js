@@ -54,7 +54,7 @@ const fileQueries = {
     } catch (err){
       console.error(err)
     }
-    await prisma.$disconnect()
+
   },
   deleteFile:  async (fileid) => {
     await prisma.file.delete({
@@ -62,7 +62,7 @@ const fileQueries = {
         id: fileid
       }
     })
-    await prisma.$disconnect()
+
   },
 
   getFolderFiles: async (folderid) => {

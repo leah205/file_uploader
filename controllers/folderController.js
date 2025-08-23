@@ -1,5 +1,17 @@
 const filedb = require("../db/fileQueries")
 const folderdb = require("../db/folderQueries")
+
+async function getFolderPath(id){
+    let folderid = id;
+    const folderPath = []
+    while(folderid){
+        let folder = await folderdb.getFolderFromId(folderid);
+        folderPath.unshift([folder.name, folder.id])
+        folderid = folder.parentid
+    }
+    
+    return folderPath
+}
 const folderController = {
    newFolder: {
         post: async (req, res, next) => {
@@ -16,21 +28,23 @@ const folderController = {
    folder: {
     get: async (req, res, next) => {
         try{
-            console.log(req.params.id)
+            const nest = await getFolderPath(Number(req.params.id))
+            for (const n in nest){
+                console.log(nest)
+                console.log(n)
+            }
             const folder = await folderdb.getFolderFromId(Number(req.params.id), req.user.id)
             if(!folder){
-                console.log(typeof req.next)
                 return next(new Error('resource not found'))
             }
             const childrenFolders = await folderdb.getChildrenFolders(Number(req.params.id))
             const childrenFiles = await folderdb.getChildrenFiles(Number(req.params.id))
-            res.render(`folder`, {files: childrenFiles, folders: childrenFolders, folder: folder})
+            res.render(`folder`, {files: childrenFiles, folders: childrenFolders, folder: folder, nest: nest})
             //get folder parents to display tree
             } catch(err) {
                 console.log("ooooh")
                 next(err)
             }
-        
     }
    }
 

@@ -246,4 +246,12 @@ color: var(--red);
 .back-link{
   color: white
 }
-
+.folder-nest a{
+  display: inline-block;
+  color: white;
+  font-size: 1.5rem;
+  padding: 10px;
+}
+.folder-nest span{
+  font-size: 1.5rem;
+}
