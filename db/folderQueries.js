@@ -3,16 +3,19 @@ const { name } = require("ejs");
 const prisma = new PrismaClient();
 
 const folderQueries = {
-    getChildrenFolders: async (parentid) => {
+    getChildrenFolders: async (parentid, userid) => {
+     
     const folders = await prisma.folder.findMany({
         where: {
-          parentid: parentid
+          parentid: parentid,
+          userid: userid
         }
       
     })
     return folders
   },
   getRootFolder: async (userid) => {
+    
     const rootFolder = await prisma.folder.findMany({
       where: {
         userid: userid,
@@ -53,10 +56,12 @@ const folderQueries = {
       }
     })
   },
-  getFolderFromId: async (id) => {
+  getFolderFromId: async (id, userid) => {
+     console.log(userid)
     const folder = await prisma.folder.findUnique({
       where: {
-        id: id
+        id: id,
+        userid:userid
       }
     })
     return folder
