@@ -22,11 +22,29 @@ const folderQueries = {
     
     return rootFolder[0]
   },
-  createFolder: async(name, userid, isRoot) => {
+  createFolder: async(name, userid, parentid) => {
     await prisma.folder.create({
       data: {
         name: name,
-        root: isRoot,
+        root: false,
+        parent: {
+          connect: {
+            id: parentid
+          }
+        },
+        user: {
+          connect: {
+            id: userid
+          }
+        }
+      }
+    })
+  },
+  createRootFolder: async(name, userid) => {
+    await prisma.folder.create({
+      data: {
+        name: name,
+        root: true,
         user: {
           connect: {
             id: userid

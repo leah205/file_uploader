@@ -19,7 +19,7 @@ const userController = {
             }
              try {
                 const user = await userdb.createUser(req.body.username, req.body.password)
-                folderdb.createFolder("All", user.id, true)
+                folderdb.createRootFolder("All", user.id)
                 res.redirect('/login')
             } catch (err) {
                     next(err)
