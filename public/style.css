@@ -243,4 +243,7 @@ color: var(--red);
 .trash-btn img{
   height: 30px;
 }
+.back-link{
+  color: white
+}
 

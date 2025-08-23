@@ -1,5 +1,8 @@
  <div class="files-container">
     <h1><%= folder.name %></h1>
+    <% if(locals.folder.parentid){%>
+        <a href="/folder/<%= folder.parentid%>" class = 'back-link'>Back</a>
+    <% } %>
             <% locals.files.forEach((file) => {%>
                 <a class = 'file-container' href ="/file/<%= file.id %>">
                         <p><%=file.originalname%></p>
