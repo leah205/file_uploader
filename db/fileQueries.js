@@ -25,7 +25,7 @@ const fileQueries = {
     } catch (err) {
       throw new Error(err);
     }
-    await prisma.$disconnect();
+    
   },
   getFiles: async (id) => {
     try {
@@ -39,7 +39,7 @@ const fileQueries = {
     } catch(err) {
         console.error(err)
     }
-    await prisma.$disconnect();
+    
   },
   getFile: async (id) =>{
 

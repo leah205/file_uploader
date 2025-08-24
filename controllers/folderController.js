@@ -1,3 +1,4 @@
+const { Db } = require("mongodb");
 const filedb = require("../db/fileQueries")
 const folderdb = require("../db/folderQueries")
 
@@ -36,6 +37,15 @@ const folderController = {
     }
    },
    folder: {
+    delete: async (req, res, next) => {
+        try {
+            await folderdb.deleteFolder(Number(req.params.deleteid))
+            
+            res.redirect('/folder/' + req.params.id)
+        } catch(err){
+            next(err)
+        }
+    },
     get: async (req, res, next) => {
         try{
             const nest = await getFolderPath(Number(req.params.id))

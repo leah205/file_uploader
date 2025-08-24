@@ -13,6 +13,14 @@ const folderQueries = {
         }
       })
     },
+    deleteFolder: async (id) => {
+      await prisma.folder.delete({
+        where: {
+          id: id
+        }
+      })
+      
+    },
 
 
     getChildrenFolders: async (parentid, userid) => {

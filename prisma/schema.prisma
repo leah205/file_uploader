@@ -38,7 +38,7 @@ model File {
   uploadedAt DateTime @default(now())
   size Int
   userid Int
-  parentFolder Folder? @relation(fields: [folderid], references: [id])
+  parentFolder Folder? @relation(fields: [folderid], references: [id], onDelete: Cascade)
   folderid Int?
   @@map("files")
 }
@@ -46,7 +46,7 @@ model File {
 model Folder {
    id       Int  @id @default(autoincrement())
    files File[]
-   parent Folder? @relation("parentChild", fields: [parentid], references: [id])
+   parent Folder? @relation("parentChild", fields: [parentid], references: [id], onDelete: Cascade)
    parentid Int?
    children Folder[] @relation("parentChild")
    name String @db.VarChar(50)
