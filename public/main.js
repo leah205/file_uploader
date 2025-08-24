@@ -6,19 +6,22 @@ const fileModal = document.querySelector('.file-modal')
 const newFolderBtn = document.querySelector('.open-new-folder')
 const newFolderModal = document.querySelector('.new-folder-modal')
 const editFolderBtn = document.querySelector('.edit-btn')
+
 const editModal = document.querySelector('.edit-modal')
 
-
-editFolderBtn.addEventListener('click', () => {
-  
+if(editFolderBtn){
+    editFolderBtn.addEventListener('click', () => {
     editModal.style.display = 'flex'
     const idInput = document.querySelector('.id-input')
     idInput.value = editFolderBtn.id
 })
+}
+
 openUploadBtn.addEventListener('click', ()=> {
     fileModal.style.display = 'flex'
 })
 newFolderBtn.addEventListener('click', ()=> {
+    console.log('hello')
     newFolderModal.style.display = 'flex'
 })
 
