@@ -215,6 +215,15 @@ nav{
   background: rgba(255, 86, 86, 0.3);
   color: var(--red);
 }
+.delete-modal form{
+  padding: 20px;
+
+}
+.delete-modal button{
+  width: 100px;
+  margin: auto;
+
+}
 /* validation errors */
 .errors-list{
   display: flex;

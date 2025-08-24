@@ -1,0 +1,9 @@
+ <div class = 'modal delete-modal'>
+         <form action="/folder/<%= folder.id%>/delete/" method = "POST">
+            <h2>Are you sure you want to delete this folder and all of its contents?</h2>
+            <input type="text" name = "id" value = "" class = 'id-input' hidden>
+        <button class = 'primary-btn' type = 'submit'>
+            Delete
+        </button>
+</form>
+        </div>

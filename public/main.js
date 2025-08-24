@@ -6,13 +6,22 @@ const fileModal = document.querySelector('.file-modal')
 const newFolderBtn = document.querySelector('.open-new-folder')
 const newFolderModal = document.querySelector('.new-folder-modal')
 const editFolderBtn = document.querySelector('.edit-btn')
-
+const deleteModalBtn = document.querySelector('.delete-modal-btn')
+const deleteModal = document.querySelector('.delete-modal')
 const editModal = document.querySelector('.edit-modal')
+
+if(deleteModalBtn){
+    deleteModalBtn.addEventListener('click', () => {
+    deleteModal.style.display = 'flex'
+    const idInput = deleteModal.querySelector('.id-input')
+    idInput.value = editFolderBtn.id
+})
+}
 
 if(editFolderBtn){
     editFolderBtn.addEventListener('click', () => {
     editModal.style.display = 'flex'
-    const idInput = document.querySelector('.id-input')
+    const idInput = editModal.querySelector('.id-input')
     idInput.value = editFolderBtn.id
 })
 }

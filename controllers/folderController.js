@@ -39,7 +39,8 @@ const folderController = {
    folder: {
     delete: async (req, res, next) => {
         try {
-            await folderdb.deleteFolder(Number(req.params.deleteid))
+            console.log(req.body.id)
+            await folderdb.deleteFolder(Number(req.body.id))
             
             res.redirect('/folder/' + req.params.id)
         } catch(err){

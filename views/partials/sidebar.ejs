@@ -13,11 +13,11 @@
                             <a href = '/folder/<%= f.id%>'><%= f.name %></a>
                             <div class="folder-btn-container">
                                 <button class = 'edit-btn' id = '<%= f.id %>'><img src="/assets/edit.svg" alt="edit"></button>
-                                    <form action="/folder/<%= folder.id%>/delete/<%= f.id%>" method = "POST">
-                                        <button class = 'trash-btn' type = 'submit'>
+                                    
+                                        <button class = 'trash-btn delete-modal-btn' type = 'submit'>
                                             <img src="/assets/trash.svg" alt="delete">
                                         </button>
-                                    </form>
+                                    
                              
                             </div>
 
