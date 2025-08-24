@@ -6,10 +6,11 @@ const passport = require("./passport")
 const flash = require('connect-flash')
 const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('./generated/prisma');
-const indexRouter = require('./routes/index')
+const indexRouter = require('./routes/index');
+const { error } = require("node:console");
 
 //make responsive
-//delete modal
+
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -44,12 +45,14 @@ app.use((req, res, next) => {
   next()
 })
 
-app.use((err, req, res, next) => {
-  //console.error(err)
-  //res.send(err.msg)
-})
+
 
 app.use('/', indexRouter);
+
+app.use((err, req, res, next) => {
+  console.log(err)
+  res.render('error', {error: err})
+})
 
 
 app.listen(process.env.HOST || 3000, (error) => {

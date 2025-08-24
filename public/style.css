@@ -9,6 +9,9 @@ body{
   padding: 0;
   margin: 0;
 }
+a{
+  color: white;
+}
 :root{
   --accent: rgb(97, 229, 255);
   --main: rgb(28, 28, 28);
@@ -272,4 +275,12 @@ color: var(--red);
 }
 .back-link{
   color: white
+}
+/* error page */
+.error-container{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  width: 100vw;
 }
