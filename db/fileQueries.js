@@ -41,12 +41,13 @@ const fileQueries = {
     }
     
   },
-  getFile: async (id) =>{
+  getFile: async (id, userid) =>{
 
     try {
       const file = await prisma.file.findUnique({
         where: {
-          id: parseInt(id)
+          id: parseInt(id),
+          userid: userid
         }
       })
      

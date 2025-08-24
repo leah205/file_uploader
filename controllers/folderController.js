@@ -50,10 +50,6 @@ const folderController = {
     get: async (req, res, next) => {
         try{
             const nest = await getFolderPath(Number(req.params.id))
-            for (const n in nest){
-                console.log(nest)
-                console.log(n)
-            }
             const folder = await folderdb.getFolderFromId(Number(req.params.id), req.user.id)
             if(!folder){
                 return next(new Error('resource not found'))
@@ -63,8 +59,7 @@ const folderController = {
             res.render(`folder`, {files: childrenFiles, folders: childrenFolders, folder: folder, nest: nest})
             //get folder parents to display tree
             } catch(err) {
-                console.log("ooooh")
-                next(err)
+                return next(new Error('resource not found'))
             }
     }
    }

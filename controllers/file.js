@@ -20,10 +20,13 @@ const fileController = {
     fileDetails: {
         get: async (req, res, next) => {
             try {
-                const file = await filedb.getFile(req.params.fileid)
+                const file = await filedb.getFile(req.params.fileid, req.user.id)
+                if(!file){
+                    return next('Resource not Found')
+                }
                 res.render('file-details', {file: file})
             } catch{
-                next(err)
+                next('Resource Not Found')
             }   
         },
         delete: async (req, res, next) => {
