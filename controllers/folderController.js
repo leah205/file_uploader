@@ -25,6 +25,16 @@ const folderController = {
             
         }
    },
+   editFolder: {
+    post: async (req, res, next) => {
+        try {
+            await folderdb.updateFolder(Number(req.body.id), req.body.name)
+            res.redirect('/folder/' + req.params.id)
+        } catch (err) {
+            next(err)
+        }
+    }
+   },
    folder: {
     get: async (req, res, next) => {
         try{

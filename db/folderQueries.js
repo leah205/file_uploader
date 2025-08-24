@@ -3,6 +3,18 @@ const { name } = require("ejs");
 const prisma = new PrismaClient();
 
 const folderQueries = {
+    updateFolder: async (id, name) => {
+      await prisma.folder.update({
+        where: {
+          id: id,
+        },
+        data: {
+          name: name
+        }
+      })
+    },
+
+
     getChildrenFolders: async (parentid, userid) => {
      
     const folders = await prisma.folder.findMany({

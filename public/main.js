@@ -10,7 +10,10 @@ const editModal = document.querySelector('.edit-modal')
 
 
 editFolderBtn.addEventListener('click', () => {
+  
     editModal.style.display = 'flex'
+    const idInput = document.querySelector('.id-input')
+    idInput.value = editFolderBtn.id
 })
 openUploadBtn.addEventListener('click', ()=> {
     fileModal.style.display = 'flex'
