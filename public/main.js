@@ -5,26 +5,29 @@ const modals = document.querySelectorAll('.modal')
 const fileModal = document.querySelector('.file-modal')
 const newFolderBtn = document.querySelector('.open-new-folder')
 const newFolderModal = document.querySelector('.new-folder-modal')
-const editFolderBtn = document.querySelector('.edit-btn')
-const deleteModalBtn = document.querySelector('.delete-modal-btn')
+const editFolderBtns = document.querySelectorAll('.edit-btn')
+const deleteModalBtns = document.querySelectorAll('.delete-modal-btn')
+
 const deleteModal = document.querySelector('.delete-modal')
 const editModal = document.querySelector('.edit-modal')
 
-if(deleteModalBtn){
-    deleteModalBtn.addEventListener('click', () => {
-    deleteModal.style.display = 'flex'
-    const idInput = deleteModal.querySelector('.id-input')
-    idInput.value = editFolderBtn.id
+deleteModalBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        deleteModal.style.display = 'flex'
+        const idInput = deleteModal.querySelector('.id-input')
+        idInput.value = btn.id
 })
-}
+})
 
-if(editFolderBtn){
-    editFolderBtn.addEventListener('click', () => {
+editFolderBtns.forEach((btn) => {
+     btn.addEventListener('click', () => {
     editModal.style.display = 'flex'
     const idInput = editModal.querySelector('.id-input')
-    idInput.value = editFolderBtn.id
+    idInput.value = btn.id
 })
-}
+})
+   
+
 
 openUploadBtn.addEventListener('click', ()=> {
     fileModal.style.display = 'flex'

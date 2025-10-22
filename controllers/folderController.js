@@ -30,6 +30,7 @@ const folderController = {
     post: async (req, res, next) => {
         try {
             await folderdb.updateFolder(Number(req.body.id), req.body.name)
+            console.log('editing folder');
             res.redirect('/folder/' + req.params.id)
         } catch (err) {
             next(err)
@@ -39,7 +40,7 @@ const folderController = {
    folder: {
     delete: async (req, res, next) => {
         try {
-            console.log(req.body.id)
+            
             await folderdb.deleteFolder(Number(req.body.id))
             
             res.redirect('/folder/' + req.params.id)
@@ -48,6 +49,7 @@ const folderController = {
         }
     },
     get: async (req, res, next) => {
+
         try{
             const nest = await getFolderPath(Number(req.params.id))
             const folder = await folderdb.getFolderFromId(Number(req.params.id), req.user.id)

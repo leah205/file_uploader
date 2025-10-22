@@ -10,7 +10,9 @@ const indexRouter = require('./routes/index');
 const { error } = require("node:console");
 
 //make responsive
-
+//new font
+//can only delete edit/delete first folder?
+//prevent duplicates
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -60,4 +62,5 @@ app.listen(process.env.HOST || 3000, (error) => {
     throw error;
   }
   console.log("app listening on port 3000!");
+ 
 });
