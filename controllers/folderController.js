@@ -10,7 +10,6 @@ async function getFolderPath(id){
         folderPath.unshift([folder.name, folder.id])
         folderid = folder.parentid
     }
-    
     return folderPath
 }
 const folderController = {

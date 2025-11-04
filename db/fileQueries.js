@@ -3,7 +3,7 @@ const { name } = require("ejs");
 const prisma = new PrismaClient();
 
 const fileQueries = {
-    createFile: async (originalname, name, userid, size, folderid) => {
+    createFile: async (originalname,  userid, size, folderid) => {
     try {
       await prisma.file.create({
         data: {
@@ -18,7 +18,6 @@ const fileQueries = {
             }
           },
           originalname: originalname,
-          name: name,
           size: size
         },
       });
@@ -42,7 +41,8 @@ const fileQueries = {
     
   },
   getFile: async (id, userid) =>{
-
+    console.log(id);
+    console.log(userid)
     try {
       const file = await prisma.file.findUnique({
         where: {

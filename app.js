@@ -8,11 +8,13 @@ const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('./generated/prisma');
 const indexRouter = require('./routes/index');
 const { error } = require("node:console");
-
+//https://stackoverflow.com/questions/70247218/how-to-save-a-file-from-supabase-storage-using-node-js-converting-blob-to-file
 //make responsive
 //new font
-//can only delete edit/delete first folder?
+//supabase
 //prevent duplicates
+//resource already exosts
+//delete files
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -57,10 +59,10 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(process.env.HOST || 3000, (error) => {
+app.listen(process.env.HOST || 4000, (error) => {
   if (error) {
     throw error;
   }
-  console.log("app listening on port 3000!");
+  console.log("app listening on port 4000!");
  
 });

@@ -5,6 +5,7 @@ const { folder } = require('./folderController');
 const homeController = {
     index: {
         get: async (req, res, next) => {
+         
             try{
                 const rootFolder = await folderdb.getRootFolder(req.user.id)
               

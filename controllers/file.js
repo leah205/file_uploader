@@ -1,16 +1,40 @@
 const multer  = require('multer')
-const upload = multer({ dest: 'public/uploads/' })
 const filedb = require("../db/fileQueries")
+const supabasedb = require('../db/supabase')
+const folderdb = require('../db/folderQueries')
+const storage = multer.memoryStorage()
+const upload = multer({storage: storage})
+
+console.log(["a", "b"].join("/"))
+
+
+
+async function getFilePath(id, filename){
+   
+    let folderid = id;
+    const folderPath = []
+    while(folderid){
+        let folder = await folderdb.getFolderFromId(folderid);
+        folderPath.unshift(folder.name)
+        folderid = folder.parentid
+    }
+  
+    return folderPath.join("/")  + "/" + filename
+}
 
 const fileController = {
     fileUpload: {
+        
         post: [upload.single('file'), async (req, res, next) => {
                 const originalname = req.file.originalname
-                const filename = req.file.filename
+               
                 const size = req.file.size
                 const folderid = Number(req.params.id)
+                
                 try {
-                     await filedb.createFile(originalname, filename, req.user.id, size, folderid)
+                     await filedb.createFile(originalname, req.user.id, size, folderid);
+                    
+                     await supabasedb.uploadFile(await getFilePath(folderid, originalname), req.user.id,  req.file.buffer, req.file.mimetype)
                 } catch(err){
                    next(err)
                 }
@@ -21,12 +45,15 @@ const fileController = {
         get: async (req, res, next) => {
             try {
                 const file = await filedb.getFile(req.params.fileid, req.user.id)
+                 const folderid = Number(req.params.id)
                 if(!file){
                     return next('Resource not Found')
                 }
-                res.render('file-details', {file: file})
-            } catch{
-                next('Resource Not Found')
+                const url = await supabasedb.getUrl(await getFilePath(folderid, file.originalname), req.user.id);
+                console.log(url)
+                res.render('file-details', {file: file, url: url})
+            } catch (err){
+                next(err)
             }   
         },
         delete: async (req, res, next) => {

@@ -32,7 +32,7 @@ model Session {
 
 model File {
   id       Int  @id @default(autoincrement())
-  name  String @db.VarChar(255)
+ 
   originalname String @db.VarChar(255)
   user User @relation(fields: [userid], references: [id])
   uploadedAt DateTime @default(now())
