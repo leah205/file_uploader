@@ -28,6 +28,13 @@ const supabasedb = {
             throw(error)
         }
         return data.signedUrl
+    },
+    deleteFile: async (path, userid) => {
+        const { data, error } = await supabase
+            .storage
+            .from('user-uploads')
+            .remove([`${userid}/${path}`])
+
     }
 }
 

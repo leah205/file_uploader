@@ -57,8 +57,12 @@ const fileController = {
             }   
         },
         delete: async (req, res, next) => {
+              const folderid = Number(req.params.id)
+              //get original name
             try {
+                const file = await filedb.getFile(req.params.fileid, req.user.id)
                 await filedb.deleteFile(parseInt(req.params.fileid))
+                await supabasedb.deleteFile(await getFilePath(folderid, file.originalname), req.user.id)
                 res.redirect('/folder/' + req.params.id)
             } catch(err){
                 next(err)
