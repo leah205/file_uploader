@@ -8,10 +8,7 @@ const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('./generated/prisma');
 const indexRouter = require('./routes/index');
 const { error } = require("node:console");
-//https://stackoverflow.com/questions/70247218/how-to-save-a-file-from-supabase-storage-using-node-js-converting-blob-to-file
 //make responsive
-//new font
-//supabase
 //prevent duplicates
 //resource already exosts
 //delete files
