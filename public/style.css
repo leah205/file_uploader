@@ -230,6 +230,10 @@ nav{
 }
 /* validation errors */
 .errors-list{
+  margin-left: 0;
+
+    width: 100vw;
+    padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;

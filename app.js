@@ -13,7 +13,10 @@ const { error } = require("node:console");
 //resource already exosts
 //delete files
 //check edge cases and error pages
-//resource already exists error
+//align authentication errors
+
+
+
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
