@@ -1,13 +1,19 @@
  <div class="sidebar">
-            <button class = 'open-file-upload primary-btn'>
-                Upload File
-            </button>
-            <button class = 'open-new-folder primary-btn'>
-                New Folder
-            </button>
+            <div class="button-container">
+                <button class = 'open-file-upload primary-btn'>
+                    Upload File
+                </button>
+                <button class = 'open-new-folder primary-btn'>
+                    New Folder
+                </button>
+            </div>
             <div class="folders">
-                <h2>Folders</h2>
-                <ul>
+                <div class="folder-header">
+                    <h2>Folders</h2>
+                    <img src="/assets/dropdown-svgrepo-com.svg" alt="expand folders" class = "expand">
+                    <img src="/assets/collapse.svg" alt="collapse folders" class = "collapse hidden">
+                </div>
+                <ul class = 'folder-list hidden'>
                     <% locals.folders.forEach((f) => {%>
                         <li>
                             <a href = '/folder/<%= f.id%>'><%= f.name %></a>

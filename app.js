@@ -14,6 +14,8 @@ const { error } = require("node:console");
 //delete files
 //check edge cases and error pages
 //align authentication errors
+//add collapsable folder drop down
+//@media change root font size
 
 
 

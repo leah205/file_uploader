@@ -7,9 +7,24 @@ const newFolderBtn = document.querySelector('.open-new-folder')
 const newFolderModal = document.querySelector('.new-folder-modal')
 const editFolderBtns = document.querySelectorAll('.edit-btn')
 const deleteModalBtns = document.querySelectorAll('.delete-modal-btn')
-
+const collapseBtn = document.querySelector(".collapse");
+const expandBtn = document.querySelector(".expand")
 const deleteModal = document.querySelector('.delete-modal')
 const editModal = document.querySelector('.edit-modal')
+const folderContainer = document.querySelector('.folder-list')
+
+collapseBtn.addEventListener('click', () => {
+    collapseBtn.classList.add("hidden");
+    expandBtn.classList.remove("hidden");
+    folderContainer.classList.add("hidden");
+})
+
+expandBtn.addEventListener('click', () => {
+    expandBtn.classList.add("hidden");
+    collapseBtn.classList.remove("hidden");
+    folderContainer.classList.remove("hidden");
+
+})
 
 deleteModalBtns.forEach((btn) => {
       btn.addEventListener('click', () => {
