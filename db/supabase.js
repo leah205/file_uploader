@@ -34,8 +34,8 @@ const supabasedb = {
             .storage
             .from('user-uploads')
             .remove([`${userid}/${path}`])
-
     }
+  
 }
 
 module.exports = supabasedb

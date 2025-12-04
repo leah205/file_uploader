@@ -27,16 +27,16 @@ const fileController = {
         
         post: [upload.single('file'), async (req, res, next) => {
                 const originalname = req.file.originalname
-               
                 const size = req.file.size
                 const folderid = Number(req.params.id)
                 
                 try {
+                    await supabasedb.uploadFile(await getFilePath(folderid, originalname), req.user.id,  req.file.buffer, req.file.mimetype)
                      await filedb.createFile(originalname, req.user.id, size, folderid);
-                    
-                     await supabasedb.uploadFile(await getFilePath(folderid, originalname), req.user.id,  req.file.buffer, req.file.mimetype)
                 } catch(err){
-                   next(err)
+                    console.log('error');
+                   next(err);
+                   return;
                 }
             res.redirect('/folder/' + req.params.id)
         }]

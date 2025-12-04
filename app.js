@@ -12,6 +12,8 @@ const { error } = require("node:console");
 //prevent duplicates
 //resource already exosts
 //delete files
+//check edge cases and error pages
+//resource already exists error
 const app = express();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -56,7 +58,7 @@ app.use((err, req, res, next) => {
 })
 
 
-app.listen(process.env.HOST || 4000, (error) => {
+app.listen(process.env.HOST || 3000, (error) => {
   if (error) {
     throw error;
   }
