@@ -15,7 +15,7 @@ async function getFilePath(id, filename){
     const folderPath = []
     while(folderid){
         let folder = await folderdb.getFolderFromId(folderid);
-        folderPath.unshift(folder.name)
+        folderPath.unshift(folderid)
         folderid = folder.parentid
     }
   

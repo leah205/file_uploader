@@ -8,14 +8,7 @@ const { PrismaSessionStore } = require('@quixo3/prisma-session-store');
 const { PrismaClient } = require('./generated/prisma');
 const indexRouter = require('./routes/index');
 const { error } = require("node:console");
-//make responsive
-//prevent duplicates
-//resource already exosts
-//delete files
-//check edge cases and error pages
-//align authentication errors
-//add collapsable folder drop down
-//@media change root font size
+//fix edit folder with supabase
 
 
 
