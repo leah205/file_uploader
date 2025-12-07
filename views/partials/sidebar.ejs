@@ -10,10 +10,10 @@
             <div class="folders">
                 <div class="folder-header">
                     <h2>Folders</h2>
-                    <img src="/assets/dropdown-svgrepo-com.svg" alt="expand folders" class = "expand">
-                    <img src="/assets/collapse.svg" alt="collapse folders" class = "collapse hidden">
+                    <img src="/assets/dropdown-svgrepo-com.svg" alt="expand folders" class = "expand hidden">
+                    <img src="/assets/collapse.svg" alt="collapse folders" class = "collapse">
                 </div>
-                <ul class = 'folder-list hidden'>
+                <ul class = 'folder-list '>
                     <% locals.folders.forEach((f) => {%>
                         <li>
                             <a href = '/folder/<%= f.id%>'><%= f.name %></a>
