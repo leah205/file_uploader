@@ -60,6 +60,6 @@ app.listen(process.env.HOST || 3000, (error) => {
   if (error) {
     throw error;
   }
-  console.log("app listening on port 4000!");
+  console.log(`app listening on port ${process.env.HOST || 3000}`);
  
 });
